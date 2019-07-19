@@ -6,7 +6,7 @@ class App extends Component {
 
   componentDidMount(){
     fetch("http://localhost:3001/api/v1/users/1")
-    .then(res => res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001/api/v1/users/1'))
+    // .then(res => res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001/api/v1/users/1'))
     // .then(r=>r.json())
     .then(res => res.text()) 
     .then(console.log)
