@@ -6,9 +6,12 @@ import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import  thunk  from 'redux-thunk'
 import { Provider } from 'react-redux'
+import usersReducer from './reducers/users'
+//naming this whatever we want as this is a default export
 
-const users= () => []
-const reducer = combineReducers({users})
+const reducer = combineReducers({
+	user: usersReducer})
+
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducer, composeEnhancer(applyMiddleware(thunk)))
 
