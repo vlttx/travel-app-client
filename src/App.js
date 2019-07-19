@@ -16,7 +16,7 @@ class App extends Component {
     <div className="App">
       <header className="App-header">
         <h1>Hello dear people!</h1><br/>
-        <img class="App-logo" src="https://static.tvtropes.org/pmwiki/pub/images/azula1.jpg"/>
+        <img className="App-logo" src="https://static.tvtropes.org/pmwiki/pub/images/azula1.jpg" alt="smirk" />
       </header>
     </div>
   );
