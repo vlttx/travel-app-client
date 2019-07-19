@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+class App extends Component {
+
+  componentDidMount(){
+    fetch("http://localhost:3001/api/v1/users/1")
+    .then(res => res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001/api/v1/users/1'))
+    // .then(r=>r.json())
+    .then(res => res.text()) 
+    .then(console.log)
+  }
+
+  render(){
   return (
     <div className="App">
       <header className="App-header">
@@ -21,6 +31,7 @@ function App() {
       </header>
     </div>
   );
+}
 }
 
 export default App;
