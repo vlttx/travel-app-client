@@ -1,13 +1,24 @@
+import React from 'react'
 
-const initialState = {
-	username: "",
-	password: ""
+const Login = () => {
+	return (
+		<form>
+		<input 
+		type="text"
+		name="username"
+		placeholder="username"
+		// onChange={}
+		/>
+		<input 
+		type="password"
+		name="password"
+		placeholder="password"
+		// onChange={}
+		/>
+		<input type="submit" value="Log In"/>
+		</form>
+
+		)
 }
-export default (state = initialState, action) => {
-	switch (action.type) {
-		case "UPDATE_LOGIN_FORM":
-		return action.formData
-		default:
-		  return state
-	}
-}
+
+export default Login

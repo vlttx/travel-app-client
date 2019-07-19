@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Login from './components/LoginForm'
 
 class App extends Component {
 
@@ -17,7 +18,9 @@ class App extends Component {
       <header className="App-header">
         <h1>Hello dear people!</h1><br/>
         <img className="App-logo" src="https://static.tvtropes.org/pmwiki/pub/images/azula1.jpg" alt="smirk" />
+        <Login/>
       </header>
+
     </div>
   );
 }
