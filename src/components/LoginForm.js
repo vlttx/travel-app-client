@@ -2,23 +2,34 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { updateLoginForm } from '../actions/loginForm'
 
-const Login = ({ username, password, updateLoginForm }) => {
+const Login = ({ loginForm, updateLoginForm }) => {
 	//since props is an object we can destructure it
+
+	const handleInputChange = event =>  {
+		const { name, value } = event.target
+		const updatedFormInfo = {
+			...loginForm,
+			[name]:value
+
+		}
+		updateLoginForm(updatedFormInfo)
+		//passing the object into a function that came from imported action
+	}
 	return (
 		<form>
 		<input 
 		type="text"
 		name="username"
-		value={username}
+		value={loginForm.username}
 		placeholder="username"
-		onChange={({name, value}) => updateLoginForm({name, value})}
+		onChange={handleInputChange}
 		/>
 		<input 
 		type="password"
 		name="password"
-		value={password}
+		value={loginForm.password}
 		placeholder="password"
-		onChange={({name, value})=> updateLoginForm({name, value})}
+		onChange={handleInputChange}
 		/>
 		<input type="submit" value="Log In"/>
 		</form>
@@ -28,8 +39,8 @@ const Login = ({ username, password, updateLoginForm }) => {
 //gives us props that we can pass as arg into this component
 const mapStateToProps = state => {
 	return {
-		username: state.loginForm.username,
-		password: state.loginForm.password
+		loginForm: state.loginForm
+		//getting the whole object instead of separate keys/values
 	}
 }
 
