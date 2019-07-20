@@ -16,8 +16,10 @@ class App extends Component {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Hello dear people!</h1><br/>
-        <img className="App-logo" src="https://static.tvtropes.org/pmwiki/pub/images/azula1.jpg" alt="smirk" />
+        <h1>Hello dear people!</h1>
+
+        <img className="App-logo" src="https://static.tvtropes.org/pmwiki/pub/images/azula1.jpg" alt="smirk" /><br/>
+        <h2>Please log in to proceed further</h2><br/>
         <Login/>
       </header>
 
