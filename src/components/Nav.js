@@ -7,7 +7,7 @@ import Login from './LoginForm'
 const Nav = ({currentUser}) => {
 	return (
 		<div className="nav">
-		{currentUser ? <h2>Special welcome to {currentUser.name}</h2>: ""}
+		{currentUser ? <h2>Special welcome to {currentUser.name} from {currentUser.hometown.city}</h2>: ""}
 		{currentUser ? <Logout/> : <Login />}
 		</div>
 		)
