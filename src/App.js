@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import Login from './components/LoginForm'
+import { connect } from 'react-redux'
+import { getCurrentUser } from "./actions/currentUser"
 
 class App extends Component {
 
   componentDidMount(){
-    fetch("http://localhost:3001/api/v1/users/1")
-    // .then(res => res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001/api/v1/users/1'))
-    // .then(r=>r.json())
-    .then(res => res.text()) 
-    .then(console.log)
+      this.props.getCurrentUser()
+   
   }
 
   render(){
@@ -28,4 +27,11 @@ class App extends Component {
 }
 }
 
-export default App;
+export default connect(null, { getCurrentUser })(App)
+
+
+ // fetch("http://localhost:3001/api/v1/users/1")
+    // .then(res => res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001/api/v1/users/1'))
+    // .then(r=>r.json())
+    // .then(res => res.text()) 
+    // .then(console.log)
