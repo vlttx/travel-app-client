@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { updateLoginForm } from '../actions/loginForm'
+import { login } from '../actions/currentUser'
 
-const Login = ({ loginForm, updateLoginForm }) => {
+const Login = ({ loginForm, updateLoginForm, login }) => {
 	//since props is an object we can destructure it
 
 	const handleInputChange = event =>  {
@@ -14,9 +15,17 @@ const Login = ({ loginForm, updateLoginForm }) => {
 		}
 		updateLoginForm(updatedFormInfo)
 		//passing the object into a function that came from imported action
+	
+	}
+
+	const handleSubmit = event => {
+		event.preventDefault()
+		login(loginForm)
+
+
 	}
 	return (
-		<form>
+		<form onSubmit={handleSubmit}>
 		<input 
 		type="text"
 		name="username"
@@ -44,4 +53,4 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps, {updateLoginForm})(Login)
+export default connect(mapStateToProps, {updateLoginForm, login })(Login)
