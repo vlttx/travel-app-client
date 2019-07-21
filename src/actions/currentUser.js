@@ -9,7 +9,7 @@
  	}
  }
 //asynchronous action creators (thunk allows to use dispatch) that return FUNCTION and promise
-//which as an argument receives
+//which as an argument receives. Happens before the synchronous action
  export const login = credentials => {
  	return dispatch =>{
 		return fetch("http://localhost:3001/api/v1/login",{
