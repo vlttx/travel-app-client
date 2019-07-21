@@ -3,6 +3,7 @@ import './App.css';
 import Login from './components/LoginForm'
 import { connect } from 'react-redux'
 import { getCurrentUser } from "./actions/currentUser"
+import Logout from './components/Logout'
 
 class App extends Component {
 
@@ -18,8 +19,7 @@ class App extends Component {
         <h1>Hello dear people!</h1>
 
         <img className="App-logo" src="https://static.tvtropes.org/pmwiki/pub/images/azula1.jpg" alt="smirk" /><br/>
-        <h2>Please log in to proceed further</h2><br/>
-        <Login/>
+        {this.props.currentUser ? <Logout/> : <Login />}
       </header>
 
     </div>
@@ -27,7 +27,13 @@ class App extends Component {
 }
 }
 
-export default connect(null, { getCurrentUser })(App)
+const mapStateToProps = state => {
+  return {
+    currentUser: state.currentUser
+  }
+}
+
+export default connect(mapStateToProps, { getCurrentUser })(App)
 
 
  // fetch("http://localhost:3001/api/v1/users/1")
