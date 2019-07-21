@@ -29,7 +29,7 @@ const Login = ({ loginForm, updateLoginForm, login }) => {
 		<input 
 		type="text"
 		name="username"
-		value={loginForm.username}
+		value={loginForm.name}
 		placeholder="username"
 		onChange={handleInputChange}
 		/>
