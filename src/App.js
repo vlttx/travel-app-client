@@ -3,6 +3,7 @@ import './App.css';
 import { connect } from 'react-redux'
 import { getCurrentUser } from "./actions/currentUser"
 import Nav from "./components/Nav"
+import MainContainer from "./components/MainContainer.js"
 
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
 
         <img className="App-logo" src="https://static.tvtropes.org/pmwiki/pub/images/azula1.jpg" alt="smirk" /><br/>
      <Nav />
+     <MainContainer />
       </header>
 
     </div>
