@@ -1,6 +1,11 @@
  
-//synchronous action creators return plain JS objects
+import { resetLoginForm } from "./loginForm"
 
+
+
+
+
+//synchronous action creators return plain JS objects
  export const setCurrentUser = user => {
  	return {
  		type: "SET_CURRENT_USER",
@@ -27,6 +32,7 @@
 			} else {
 				// dispatch({type: "SET_CURRENT_USER", user: user}) but we have action creator above, so
 				dispatch(setCurrentUser(user))
+        dispatch(resetLoginForm())
 			}
 
 
@@ -59,8 +65,6 @@
     .catch(console.log)
   }
  }
-
-
 
 //asynchronous
  export const logout = () => {
