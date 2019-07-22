@@ -1,5 +1,6 @@
  
 import { resetLoginForm } from "./loginForm"
+import { getMyTrips } from "./myTrips"
 
 
 
@@ -32,6 +33,7 @@ import { resetLoginForm } from "./loginForm"
 			} else {
 				// dispatch({type: "SET_CURRENT_USER", user: user}) but we have action creator above, so
 				dispatch(setCurrentUser(user))
+        dispatch(getMyTrips())
         dispatch(resetLoginForm())
 			}
 
@@ -58,6 +60,7 @@ import { resetLoginForm } from "./loginForm"
       } else {
         // dispatch({type: "SET_CURRENT_USER", user: user}) but we have action creator above, so
         dispatch(setCurrentUser(user))
+        dispatch(getMyTrips())
       }
 
 
