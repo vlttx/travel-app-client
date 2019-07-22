@@ -3,7 +3,12 @@ import './App.css';
 import { connect } from 'react-redux'
 import { getCurrentUser } from "./actions/currentUser"
 import Nav from "./components/Nav"
+import Login from "./components/LoginForm"
+import Logout from "./components/Logout"
+import MyTrips from "./components/MyTrips"
 import MainContainer from "./components/MainContainer.js"
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 
 
 class App extends Component {
@@ -21,7 +26,11 @@ class App extends Component {
 
         <img className="App-logo" src="https://static.tvtropes.org/pmwiki/pub/images/azula1.jpg" alt="smirk" /><br/>
      <Nav />
-     <MainContainer />
+     <Router>
+          <Route exact path="/login" component={Login}/>
+          <Route exact path="/logout" component={Logout}/>
+          <Route exact path="/my-trips" component={MyTrips}/>
+      </Router>
       </header>
 
     </div>
