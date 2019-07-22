@@ -3,12 +3,15 @@ import usersReducer from './reducers/users'
 import loginForm from './reducers/loginForm'
 import currentUser from './reducers/currentUser'
 import  thunk  from 'redux-thunk'
+import myTrips from './reducers/myTrips'
 
 const reducer = combineReducers({
 	users: usersReducer,
 	//above we have expanded version, below - shorthand
 	currentUser,
-    loginForm})
+    loginForm,
+	myTrips
+	})
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducer, composeEnhancer(applyMiddleware(thunk)))
