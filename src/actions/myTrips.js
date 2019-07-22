@@ -23,7 +23,7 @@ export const getMyTrips = () => {
 			if (response.error){
 				alert(response.error)
 			} else {
-				dispatch(setMyTrips())
+				dispatch(setMyTrips(response))
 			}
 		})
 		.catch(console.log)
