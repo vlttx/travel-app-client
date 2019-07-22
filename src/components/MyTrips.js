@@ -6,7 +6,7 @@ import TripCard from "./TripCard"
 const MyTrips = props => {
 	const tripCards = props.trips.map( t => <TripCard trip={t} key={t.id}/>)
 	return (
-
+		
 		tripCards.length > 0 ? tripCards : "No trips at the moment")
 
 	}
