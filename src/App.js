@@ -5,6 +5,7 @@ import { getCurrentUser } from "./actions/currentUser"
 import Nav from "./components/Nav"
 import Login from "./components/LoginForm"
 import Logout from "./components/Logout"
+import SignUp from "./components/SignUp"
 import MyTrips from "./components/MyTrips"
 import MainContainer from "./components/MainContainer.js"
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -28,7 +29,7 @@ class App extends Component {
      <Nav />
      <Router>
           <Route exact path="/login" component={Login}/>
-          <Route exact path="/logout" component={Logout}/>
+          <Route exact path="/signup" component={SignUp}/>
           <Route exact path="/my-trips" component={MyTrips}/>
       </Router>
       </header>
