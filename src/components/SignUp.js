@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { updateSignUpForm } from '../actions/signupForm'
-// import { signup } from '../actions/currentUser'
+import { signup } from '../actions/currentUser'
 
-const SignUp = ({ signupForm, updateSignUpForm }) => {
+const SignUp = ({ signupForm, updateSignUpForm, signup }) => {
 	//since props is an object we can destructure it
 
 	const handleMainInputChange = event =>  {
@@ -34,7 +34,7 @@ const SignUp = ({ signupForm, updateSignUpForm }) => {
 
 	const handleSubmit = event => {
 		event.preventDefault()
-		// signup(signupForm)
+		signup(signupForm)
 
 
 	}
@@ -95,4 +95,4 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps, {updateSignUpForm })(SignUp)
+export default connect(mapStateToProps, {updateSignUpForm, signup })(SignUp)
