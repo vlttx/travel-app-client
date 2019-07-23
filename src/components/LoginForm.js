@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { updateLoginForm } from '../actions/loginForm'
 import { login } from '../actions/currentUser'
 
-const Login = ({ loginForm, updateLoginForm, login }) => {
+const Login = ({ loginForm, updateLoginForm, login, history }) => {
 	//since props is an object we can destructure it
 
 	const handleInputChange = event =>  {
@@ -20,7 +20,7 @@ const Login = ({ loginForm, updateLoginForm, login }) => {
 
 	const handleSubmit = event => {
 		event.preventDefault()
-		login(loginForm)
+		login(loginForm, history)
 
 
 	}
