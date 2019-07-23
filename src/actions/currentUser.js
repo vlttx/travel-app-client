@@ -1,6 +1,7 @@
  
 import { resetLoginForm } from "./loginForm"
 import { getMyTrips } from "./myTrips"
+import { resetSignUpForm } from "./signupForm"
 
 
 
@@ -42,6 +43,36 @@ import { getMyTrips } from "./myTrips"
 		.catch(console.log)
  	}
  }
+
+ export const signup = credentials => {
+  return dispatch =>{
+    return fetch("http://localhost:3001/api/v1/signup",{
+      credentials: "include",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(credentials)
+    })
+    .then(r => r.json())
+    .then(user => {
+      if (user.error) {
+        alert(user.error)
+      } else {
+  //       // dispatch({type: "SET_CURRENT_USER", user: user}) but we have action creator above, so
+       console.log(user)
+  //       dispatch(setCurrentUser(user))
+  //       dispatch(getMyTrips())
+  //       dispatch(resetSignUpForm())
+      }
+
+
+      })
+  //   .catch(console.log)
+  }
+ }
+
+
 
 
     export const getCurrentUser = () => {
