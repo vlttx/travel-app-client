@@ -6,7 +6,7 @@ const initialState = {
 	hometown: {
 		city: "",
 		state: "",
-		countery: ""
+		country: ""
 	}
 }
 
