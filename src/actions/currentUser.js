@@ -17,7 +17,7 @@ import { resetSignUpForm } from "./signupForm"
  }
 //asynchronous action creators (thunk allows to use dispatch) that return FUNCTION and promise
 //which as an argument receives. Happens before the synchronous action
- export const login = credentials => {
+ export const login = (credentials, history) => {
  	return dispatch =>{
 		return fetch("http://localhost:3001/api/v1/login",{
 			credentials: "include",
@@ -36,6 +36,7 @@ import { resetSignUpForm } from "./signupForm"
 				dispatch(setCurrentUser(user))
         dispatch(getMyTrips())
         dispatch(resetLoginForm())
+        history.push("/")
 			}
 
 
@@ -60,15 +61,14 @@ import { resetSignUpForm } from "./signupForm"
         alert(user.error)
       } else {
   //       // dispatch({type: "SET_CURRENT_USER", user: user}) but we have action creator above, so
-       console.log(user)
-  //       dispatch(setCurrentUser(user))
-  //       dispatch(getMyTrips())
-  //       dispatch(resetSignUpForm())
+        dispatch(setCurrentUser(user))
+        dispatch(getMyTrips())
+        dispatch(resetSignUpForm())
       }
 
 
       })
-  //   .catch(console.log)
+    .catch(console.log)
   }
  }
 
