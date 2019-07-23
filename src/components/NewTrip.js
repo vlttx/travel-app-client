@@ -1,37 +1,70 @@
 import React from 'react';
+import { updateNewTrip } from '../actions/newTrip'
+import { connect } from 'react-redux'
 
-const NewTrip = (props) => {
+const NewTrip = ({ newTripForm, updateNewTrip, history}) => {
 
-	handleOnChange = () =>{
+	const handleOnChange = event => {
+		const { name, value } = event.target
+		//updateNewTrip(name, value)
+		const enteredNewTrip = {
+			...newTripForm,
+			[name]:value
+
+		}
+		updateNewTrip(enteredNewTrip)
+		//passing the object into a function that came from imported action
+	
+	}
+
+	const handleSubmit = event => {
+		event.preventDefault()
+
 
 	}
 
-
-
   return (
-    <form>
+
+
+    <form onSubmit={handleSubmit}>
+    <h3> Add a new trip: </h3>
     	<input 
     	type="text"
     	name="name"
     	onChange={handleOnChange}
-    	value={"name"}
-    	/>
+    	value={newTripForm.name}
+    	placeholder="trip name"
+    	/><br/>
     	<input 
     	type="text"
     	name="startDate"
     	onChange={handleOnChange}
-    	value={"sd"}
-    	/>
+    	value={newTripForm.startDate}
+    	placeholder="start date"
+    	/><br/>
     	<input 
     	type="text"
     	name="endDate"
     	onChange={handleOnChange}
-    	value={"ed"}
-    	/>
-
+    	value={newTripForm.endDate}
+    	placeholder="end date"
+    	/><br/>
+    	<input type="submit" value="Add"/>
 
     </form>
   );
 };
 
-export default NewTrip;
+const mapStateToProps = state => {
+	// const {name, startDate, endDate} = state.newTrip
+	// return {
+	// 	name,
+	// 	startDate,
+	// 	endDate
+	// }
+	return {
+		newTripForm: state.newTrip
+	}
+}
+
+export default connect(mapStateToProps, { updateNewTrip })(NewTrip);
