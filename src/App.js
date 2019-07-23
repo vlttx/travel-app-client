@@ -7,9 +7,10 @@ import Logout from "./components/Logout"
 import SignUp from "./components/SignUp"
 import MyTrips from "./components/MyTrips"
 import MainContainer from "./components/MainContainer.js"
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home"
 import NewTrip from "./components/NewTrip"
+import Nav from "./components/Nav"
 
 
 class App extends Component {
@@ -22,23 +23,27 @@ class App extends Component {
   render(){
     const {loggedIn} = this.props
   return (
-    <div className="App">
-      <header className="App-header">
-
-        <img className="App-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgT-jfLkw_rvE_ji-ijtGCS59tkbOAHHqlO-o-rNuiSYtMCdui" alt='earth'/><br/>
    
+      <header className="App-header">
+       
+       
+    <div className="App">
      <Router>
-     <Route exact path="/" render={()=> loggedIn ? <MyTrips /> : <Home />}/>
+      {loggedIn ? <Nav /> : null }
+      <img className="App-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgT-jfLkw_rvE_ji-ijtGCS59tkbOAHHqlO-o-rNuiSYtMCdui" alt='earth'/><br/>
+          <Switch>
+          <Route exact path="/" render={()=> loggedIn ? <MyTrips /> : <Home />}/>
           <Route exact path="/login" component={Login}/>
+
           <Route exact path="/my-trips" component={MyTrips}/>
           <Route exact path="/signup" component={SignUp}/>
-          <Route exact path="/trips/new" component={NewTrip}/>
-          
+          <Route exact path="/my-trips/new" component={NewTrip}/>   
+          </Switch>
       </Router>
-      { loggedIn ? <Logout/> : null}
-      </header>
+  
 
     </div>
+         </header>
   );
 }
 }
@@ -46,7 +51,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return ({
-    loggedIn: !!state.currentUser
+    loggedIn: !!state.currentUser,
   })
 }
 
