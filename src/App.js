@@ -34,7 +34,6 @@ class App extends Component {
           <Switch>
           <Route exact path="/" render={()=> loggedIn ? <MyTrips /> : <Home />}/>
           <Route exact path="/login" component={Login}/>
-
           <Route exact path="/my-trips" component={MyTrips}/>
           <Route exact path="/signup" component={SignUp}/>
           <Route exact path="/my-trips/new" component={NewTrip}/>   
@@ -57,7 +56,7 @@ const mapStateToProps = state => {
 
 
 export default connect(mapStateToProps, { getCurrentUser })(App)
-
+     
 
  // fetch("http://localhost:3001/api/v1/users/1")
     // .then(res => res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001/api/v1/users/1'))
