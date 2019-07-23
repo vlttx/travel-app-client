@@ -45,7 +45,7 @@ import { resetSignUpForm } from "./signupForm"
  	}
  }
 
- export const signup = credentials => {
+ export const signup = (credentials, history) => {
   return dispatch =>{
     return fetch("http://localhost:3001/api/v1/signup",{
       credentials: "include",
@@ -64,6 +64,7 @@ import { resetSignUpForm } from "./signupForm"
         dispatch(setCurrentUser(user))
         dispatch(getMyTrips())
         dispatch(resetSignUpForm())
+        history.push("/")
       }
 
 
