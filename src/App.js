@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux'
 import { getCurrentUser } from "./actions/currentUser"
-import Nav from "./components/Nav"
 import Login from "./components/LoginForm"
 import Logout from "./components/Logout"
 import SignUp from "./components/SignUp"
 import MyTrips from "./components/MyTrips"
 import MainContainer from "./components/MainContainer.js"
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Home from "./components/Home"
 
 
 
@@ -20,19 +20,21 @@ class App extends Component {
   }
 
   render(){
+    const {loggedIn} = this.props
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Hello dear people!</h1>
 
-        <img className="App-logo" src="https://static.tvtropes.org/pmwiki/pub/images/azula1.jpg" alt="smirk" /><br/>
-     <Nav />
+        <img className="App-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgT-jfLkw_rvE_ji-ijtGCS59tkbOAHHqlO-o-rNuiSYtMCdui" alt='earth'/><br/>
+   
      <Router>
+     <Route exact path="/" render={()=> loggedIn ? <MyTrips /> : <Home />}/>
           <Route exact path="/login" component={Login}/>
           <Route exact path="/my-trips" component={MyTrips}/>
           <Route exact path="/signup" component={SignUp}/>
           
       </Router>
+      { loggedIn ? <Logout/> : null}
       </header>
 
     </div>
@@ -41,7 +43,14 @@ class App extends Component {
 }
 
 
-export default connect(null, { getCurrentUser })(App)
+const mapStateToProps = state => {
+  return ({
+    loggedIn: !!state.currentUser
+  })
+}
+
+
+export default connect(mapStateToProps, { getCurrentUser })(App)
 
 
  // fetch("http://localhost:3001/api/v1/users/1")
