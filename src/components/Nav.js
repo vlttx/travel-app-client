@@ -8,6 +8,7 @@ import { NavLink } from 'react-router-dom'
 const Nav = ({currentUser, loggedIn}) => {
 	return (
 		<div className="nav">
+		<NavLink exact activeClass to="/">Home  |</NavLink>
 		<NavLink exact activeClass to="/my-trips">My Trips  |</NavLink>
 		<NavLink exact activeClass to="/my-trips/new">New Trip  |</NavLink>
 		{ loggedIn ? <Logout/> : null} 	
