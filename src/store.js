@@ -5,7 +5,7 @@ import currentUser from './reducers/currentUser'
 import  thunk  from 'redux-thunk'
 import myTrips from './reducers/myTrips'
 import signupForm from './reducers/signupForm'
-import newTrip from './reducers/NewTrip'
+import newTrip from './reducers/newTrip'
 
 const reducer = combineReducers({
 	users: usersReducer,
