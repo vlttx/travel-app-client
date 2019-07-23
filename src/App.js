@@ -9,7 +9,7 @@ import MyTrips from "./components/MyTrips"
 import MainContainer from "./components/MainContainer.js"
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./components/Home"
-
+import NewTrip from "./components/NewTrip"
 
 
 class App extends Component {
@@ -32,6 +32,7 @@ class App extends Component {
           <Route exact path="/login" component={Login}/>
           <Route exact path="/my-trips" component={MyTrips}/>
           <Route exact path="/signup" component={SignUp}/>
+          <Route exact path="/trips/new" component={NewTrip}/>
           
       </Router>
       { loggedIn ? <Logout/> : null}
