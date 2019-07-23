@@ -2,6 +2,7 @@
 import { resetLoginForm } from "./loginForm"
 import { getMyTrips } from "./myTrips"
 import { resetSignUpForm } from "./signupForm"
+import { clearTrips } from "./myTrips"
 
 
 
@@ -105,6 +106,7 @@ import { resetSignUpForm } from "./signupForm"
  export const logout = () => {
  	return dispatch => {
  		dispatch(clearCurrentUser())
+    dispatch(clearTrips())
  		return fetch("http://localhost:3001/api/v1/logout", {
  			credentials: "include",
  			method: "DELETE"
@@ -118,3 +120,4 @@ import { resetSignUpForm } from "./signupForm"
  		type: "CLEAR_CURRENT_USER"
  	}
  }
+
