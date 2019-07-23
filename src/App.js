@@ -29,8 +29,9 @@ class App extends Component {
      <Nav />
      <Router>
           <Route exact path="/login" component={Login}/>
-          <Route exact path="/signup" component={SignUp}/>
           <Route exact path="/my-trips" component={MyTrips}/>
+          <Route exact path="/signup" component={SignUp}/>
+          
       </Router>
       </header>
 
