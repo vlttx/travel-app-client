@@ -103,10 +103,11 @@ import { clearTrips } from "./myTrips"
  }
 
 //asynchronous
- export const logout = () => {
+ export const logout = (history) => {
  	return dispatch => {
  		dispatch(clearCurrentUser())
     dispatch(clearTrips())
+    history.push("/")
  		return fetch("http://localhost:3001/api/v1/logout", {
  			credentials: "include",
  			method: "DELETE"
