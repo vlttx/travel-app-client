@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color:  black;
+  color:  white;
 }
 
 .App-logo {
@@ -34,11 +36,17 @@
 }
 
 .nav {
+  margin-left: 50px;
+  align-items: center;
   color:  orange;
+  display: flex;
+  flex-direction:  row;
 
 }
 
-
+a.active {
+  color:  green;
+}
 .link {
   color: #FFF;
 }
