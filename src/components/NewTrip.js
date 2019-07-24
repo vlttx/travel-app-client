@@ -23,7 +23,7 @@ const NewTrip = ({ newTripForm, updateNewTrip, history, createTrip, userId }) =>
         createTrip({
             ...newTripForm,
             userId
-        })
+        }, history)
 
 
 	}
