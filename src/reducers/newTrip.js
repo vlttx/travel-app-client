@@ -1,7 +1,8 @@
 const initialState = {
 	name: "",
 	startDate: "",
-	endDate: ""
+	endDate: "",
+	imageurl: ""
 }
 
 export default (state = initialState, action) => {
