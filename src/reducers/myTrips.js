@@ -9,6 +9,8 @@ export default (state = [], action) => {
 		  return action.trips
 		case "ADD_TRIP":
 		return state.concat(action.trip)
+		case "UPDATE_TRIP":
+		return state.map(trip => trip.id===action.trip.id ? action.trip : trip)
 		case "CLEAR_TRIPS":
 		  return []
 		default:

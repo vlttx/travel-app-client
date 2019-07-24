@@ -42,9 +42,10 @@
 
 .nav {
   margin-left: 50px;
-  align-items: center;
+/*   align-items: center; */
   color:  orange;
-/*   display: flex; */
+  justify-content: space-between;
+ /* display: flex; */
   /* flex-direction:  row; */
 
 }

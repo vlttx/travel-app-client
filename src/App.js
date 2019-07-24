@@ -12,7 +12,9 @@ import Home from "./components/Home"
 import NewTrip from "./components/NewTrip"
 import Nav from "./components/Nav"
 import TripCard from "./components/TripCard"
+import NewTripFormWrapper from "./components/NewTripFormWrapper"
 import { setFormDataForEdit } from "./actions/newTrip"
+import EditFormWrapper from "./components/EditFormWrapper"
 
 
 class App extends Component {
@@ -36,15 +38,15 @@ class App extends Component {
           <Route exact path="/login" component={Login}/>
           <Route exact path="/my-trips" component={MyTrips}/>
           <Route exact path="/signup" component={SignUp}/>
-          <Route exact path="/my-trips/new" component={NewTrip}/>
+          <Route exact path="/my-trips/new" component={NewTripFormWrapper}/>
           <Route exact path="/trips/:id"    render={props => {
            const trip = alltrips.find((trip) => trip.id === parseInt(props.match.params.id));
             return <TripCard trip={trip} {...props}/>
             }}/>
             <Route exact path="/trips/:id/edit"    render={props => {
            const trip = alltrips.find((trip) => trip.id === parseInt(props.match.params.id));
-           setFormDataForEdit(trip)
-            return <NewTrip trip={trip} {...props}/>
+           // setFormDataForEdit(trip)
+            return <EditFormWrapper trip={trip} {...props}/>
             }}/>
           </Switch>
       </Router>

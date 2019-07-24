@@ -3,13 +3,13 @@ import { updateNewTrip } from '../actions/newTrip'
 import { createTrip } from '../actions/myTrips'
 import { connect } from 'react-redux'
 
-const NewTrip = ({ newTripForm, updateNewTrip, history, createTrip, userId }) => {
+const NewTrip = ({ formData, updateNewTrip, history, userId, trip, handleSubmit, editMode }) => {
 
 	const handleOnChange = event => {
 		const { name, value } = event.target
 		//updateNewTrip(name, value)
 		const enteredNewTrip = {
-			...newTripForm,
+			...formData,
 			[name]:value
 
 		}
@@ -18,25 +18,27 @@ const NewTrip = ({ newTripForm, updateNewTrip, history, createTrip, userId }) =>
 	
 	}
 
-	const handleSubmit = event => {
-		event.preventDefault()
-        createTrip({
-            ...newTripForm,
-            userId
-        }, history)
+	// const handleSubmit = event => {
+	// 	event.preventDefault()
+ //        createTrip({
+ //            ...formData,
+ //            userId
+ //        }, history)
 
 
-	}
+	// }
 
   return (
 
 
-    <form onSubmit={handleSubmit}>
-    <h3> Add a new trip: </h3>
+    <form onSubmit={event => {
+        event.preventDefault()
+        handleSubmit(event, formData, userId, history)}}>
+    <h3> Add trip details: </h3>
     	<input 
     	type="text"
     	name="name"
-        value={newTripForm.name}
+        value={formData.name}
     	onChange={handleOnChange}
     	placeholder="trip name"
     	/><br/>
@@ -44,24 +46,24 @@ const NewTrip = ({ newTripForm, updateNewTrip, history, createTrip, userId }) =>
     	type="text"
     	name="startDate"
     	onChange={handleOnChange}
-    	value={newTripForm.startDate}
+    	value={formData.startDate}
     	placeholder="start date"
     	/><br/>
     	<input 
     	type="text"
     	name="endDate"
     	onChange={handleOnChange}
-    	value={newTripForm.endDate}
+    	value={formData.endDate}
     	placeholder="end date"
     	/><br/>
         <input 
         type="text"
         name="imageurl"
         onChange={handleOnChange}
-        value={newTripForm.imageurl}
+        value={formData.imageurl}
         placeholder="add image url"
         /><br/>
-    	<input type="submit" value="Add"/>
+    	<input type="submit" value={ editMode ? "Update" : "Add"}/>
 
     </form>
   );
@@ -76,9 +78,9 @@ const mapStateToProps = state => {
 	// 	endDate
 	// }
 	return {
-		newTripForm: state.newTrip,
+		formData: state.newTrip,
         userId
 	}
 }
 
-export default connect(mapStateToProps, { updateNewTrip, createTrip })(NewTrip);
+export default connect(mapStateToProps, { updateNewTrip})(NewTrip);
