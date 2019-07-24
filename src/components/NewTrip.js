@@ -1,8 +1,9 @@
 import React from 'react';
 import { updateNewTrip } from '../actions/newTrip'
+import { createTrip } from '../actions/myTrips'
 import { connect } from 'react-redux'
 
-const NewTrip = ({ newTripForm, updateNewTrip, history}) => {
+const NewTrip = ({ newTripForm, updateNewTrip, history, createTrip, userId }) => {
 
 	const handleOnChange = event => {
 		const { name, value } = event.target
@@ -19,6 +20,10 @@ const NewTrip = ({ newTripForm, updateNewTrip, history}) => {
 
 	const handleSubmit = event => {
 		event.preventDefault()
+        createTrip({
+            ...newTripForm,
+            userId
+        })
 
 
 	}
@@ -31,8 +36,8 @@ const NewTrip = ({ newTripForm, updateNewTrip, history}) => {
     	<input 
     	type="text"
     	name="name"
+        value={newTripForm.name}
     	onChange={handleOnChange}
-    	value={newTripForm.name}
     	placeholder="trip name"
     	/><br/>
     	<input 
@@ -49,6 +54,13 @@ const NewTrip = ({ newTripForm, updateNewTrip, history}) => {
     	value={newTripForm.endDate}
     	placeholder="end date"
     	/><br/>
+        <input 
+        type="text"
+        name="imageurl"
+        onChange={handleOnChange}
+        value={newTripForm.imageurl}
+        placeholder="add image url"
+        /><br/>
     	<input type="submit" value="Add"/>
 
     </form>
@@ -56,6 +68,7 @@ const NewTrip = ({ newTripForm, updateNewTrip, history}) => {
 };
 
 const mapStateToProps = state => {
+    const userId =  state.currentUser ? state.currentUser.id : ""
 	// const {name, startDate, endDate} = state.newTrip
 	// return {
 	// 	name,
@@ -63,8 +76,9 @@ const mapStateToProps = state => {
 	// 	endDate
 	// }
 	return {
-		newTripForm: state.newTrip
+		newTripForm: state.newTrip,
+        userId
 	}
 }
 
-export default connect(mapStateToProps, { updateNewTrip })(NewTrip);
+export default connect(mapStateToProps, { updateNewTrip, createTrip })(NewTrip);
