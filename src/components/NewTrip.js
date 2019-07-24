@@ -1,6 +1,6 @@
 import React from 'react';
 import { updateNewTrip } from '../actions/newTrip'
-import { createTrip } from '../actions/myTrips'
+// import { createTrip } from '../actions/myTrips'
 import { connect } from 'react-redux'
 
 const NewTrip = ({ formData, updateNewTrip, history, userId, trip, handleSubmit, editMode }) => {
