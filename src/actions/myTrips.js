@@ -21,6 +21,13 @@ export const setMyTrips = trips => {
  	}
  }
 
+  export const deleteTripSuccess = tripId => {
+ 	return {
+ 		type: "DELETE_TRIP_SUCCESS",
+ 		tripId
+ 	}
+ }
+
  export const updateTripSuccess = trip => {
  	return {
  		type: "UPDATE_TRIP",
@@ -121,3 +128,28 @@ export const updateTrip = (tripData, history) => {
 		.catch(console.log)
 	}
 }
+
+
+export const deleteTrip = (tripId, history) => {
+	return dispatch => {
+		return fetch(`http://localhost:3001/api/v1/trips/${tripId}`, {
+			credentials: "include",
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json"
+			}
+		})
+		.then(r=> r.json())
+		.then(trip => {
+			if (trip.error) {
+				alert(trip.error)
+			} else{
+			dispatch(deleteTripSuccess(tripId))
+			//this update will update the store
+			history.push("/my-trips")
+		}
+		})
+		.catch(console.log)
+	}
+}
+
