@@ -1,14 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import TripCard from "./TripCard"
+import { Link } from 'react-router-dom'
 
 
 const MyTrips = props => {
-	const tripCards = props.trips.map( t => <TripCard trip={t} key={t.id}/>)
-	return (
-	   
-		tripCards.length > 0 ? tripCards : "No trips at the moment"
-)
+	const tripCards = props.trips.length > 0 ? 
+	props.trips.map( t => <Link to={`/trips/${t.id}`} key={t.id}>{t.name}<br/></Link>) : "No trips at the moment"
+	return tripCards
 	}
 
 
