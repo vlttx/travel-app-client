@@ -3,14 +3,15 @@ import './App.css';
 import { connect } from 'react-redux'
 import { getCurrentUser } from "./actions/currentUser"
 import Login from "./components/LoginForm"
-import Logout from "./components/Logout"
+// import Logout from "./components/Logout"
 import SignUp from "./components/SignUp"
 import MyTrips from "./components/MyTrips"
-import MainContainer from "./components/MainContainer.js"
+// import MainContainer from "./components/MainContainer.js"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home"
 import NewTrip from "./components/NewTrip"
 import Nav from "./components/Nav"
+import TripCard from "./components/TripCard"
 
 
 class App extends Component {
@@ -21,14 +22,12 @@ class App extends Component {
   }
 
   render(){
-    const {loggedIn} = this.props
-  return (
-   
-      <header className="App-header">
-       
-       
+   const {loggedIn, alltrips} = this.props
+   return (
+      <header className="App-header">  
     <div className="App">
      <Router>
+
       {loggedIn ? <Nav /> : null }
       <img className="App-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgT-jfLkw_rvE_ji-ijtGCS59tkbOAHHqlO-o-rNuiSYtMCdui" alt='earth'/><br/>
           <Switch>
@@ -36,7 +35,11 @@ class App extends Component {
           <Route exact path="/login" component={Login}/>
           <Route exact path="/my-trips" component={MyTrips}/>
           <Route exact path="/signup" component={SignUp}/>
-          <Route exact path="/my-trips/new" component={NewTrip}/>   
+          <Route exact path="/my-trips/new" component={NewTrip}/>
+          <Route exact path="/trips/:id"    render={props => {
+           const trip = alltrips.find((trip) => trip.id === parseInt(props.match.params.id));
+            return <TripCard trip={trip} {...props}/>
+            }}/>
           </Switch>
       </Router>
   
@@ -51,6 +54,8 @@ class App extends Component {
 const mapStateToProps = state => {
   return ({
     loggedIn: !!state.currentUser,
+    alltrips: state.myTrips
+
   })
 }
 
