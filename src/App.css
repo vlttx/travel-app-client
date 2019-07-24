@@ -53,3 +53,8 @@ a.active {
 .link:hover {
    color: #00F
 }
+
+.tripCard {
+  display:  inline-block;
+  margin: 10px;
+}
