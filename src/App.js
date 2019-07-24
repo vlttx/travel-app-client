@@ -40,6 +40,10 @@ class App extends Component {
            const trip = alltrips.find((trip) => trip.id === parseInt(props.match.params.id));
             return <TripCard trip={trip} {...props}/>
             }}/>
+            <Route exact path="/trips/:id/edit"    render={props => {
+           const trip = alltrips.find((trip) => trip.id === parseInt(props.match.params.id));
+            return <NewTrip trip={trip} {...props}/>
+            }}/>
           </Switch>
       </Router>
   
