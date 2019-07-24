@@ -12,6 +12,7 @@ import Home from "./components/Home"
 import NewTrip from "./components/NewTrip"
 import Nav from "./components/Nav"
 import TripCard from "./components/TripCard"
+import { setFormDataForEdit } from "./actions/newTrip"
 
 
 class App extends Component {
@@ -22,7 +23,7 @@ class App extends Component {
   }
 
   render(){
-   const {loggedIn, alltrips} = this.props
+   const {loggedIn, alltrips, setFormDataForEdit} = this.props
    return (
       <header className="App-header">  
     <div className="App">
@@ -42,6 +43,7 @@ class App extends Component {
             }}/>
             <Route exact path="/trips/:id/edit"    render={props => {
            const trip = alltrips.find((trip) => trip.id === parseInt(props.match.params.id));
+           setFormDataForEdit(trip)
             return <NewTrip trip={trip} {...props}/>
             }}/>
           </Switch>
@@ -64,7 +66,7 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { getCurrentUser })(App)
+export default connect(mapStateToProps, { getCurrentUser, setFormDataForEdit })(App)
      
 
  // fetch("http://localhost:3001/api/v1/users/1")
