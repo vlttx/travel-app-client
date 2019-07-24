@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Logout from './Logout'
-import Login from './LoginForm'
+// import Login from './LoginForm'
 import { NavLink } from 'react-router-dom'
 
 
