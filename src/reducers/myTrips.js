@@ -11,6 +11,9 @@ export default (state = [], action) => {
 		return state.concat(action.trip)
 		case "UPDATE_TRIP":
 		return state.map(trip => trip.id===action.trip.id ? action.trip : trip)
+		case "DELETE_TRIP_SUCCESS":
+		// console.log(state.trips, action.tripId)
+		return state.filter(trip => trip.id === action.tripId ? false:true)
 		case "CLEAR_TRIPS":
 		  return []
 		default:
