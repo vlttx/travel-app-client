@@ -20,6 +20,12 @@ export const setMyTrips = trips => {
  		trip
  	}
  }
+
+ export const resetNewTripForm = () => {
+ 	return {
+ 		type: "RESET_NEWTRIP_FORM"
+ 	}
+ }
 //asynchronous 
 
 export const getMyTrips = () => {
@@ -43,7 +49,7 @@ export const getMyTrips = () => {
 	}
 }
 
-export const createTrip = tripData => {
+export const createTrip = (tripData, history) => {
 	return dispatch => {
 		const sendableTripData = {
 			trip: {
@@ -66,9 +72,11 @@ export const createTrip = tripData => {
 		.then(trip => {
 			if (trip.error) {
 				alert(trip.error)
-			} else {
-				alert("worked")
-			}
+			} else{
+			dispatch(addTrip(trip))
+			history.push(`/trips/${trip.id}`)
+		}
 		})
+		.catch(console.log)
 	}
 }
