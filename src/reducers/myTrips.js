@@ -3,6 +3,8 @@ export default (state = [], action) => {
 
 		case "SET_MY_TRIPS":
 		  return action.trips
+		case "ADD_TRIP":
+		return state.trips.concat(action.trips)
 		case "CLEAR_TRIPS":
 		  return []
 		default:
