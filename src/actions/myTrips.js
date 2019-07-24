@@ -1,4 +1,4 @@
-
+import { resetNewForm } from './newTrip'
 //synchronous
 export const setMyTrips = trips => {
 	return {
@@ -21,11 +21,7 @@ export const setMyTrips = trips => {
  	}
  }
 
- export const resetNewTripForm = () => {
- 	return {
- 		type: "RESET_NEWTRIP_FORM"
- 	}
- }
+
 //asynchronous 
 
 export const getMyTrips = () => {
@@ -74,6 +70,7 @@ export const createTrip = (tripData, history) => {
 				alert(trip.error)
 			} else{
 			dispatch(addTrip(trip))
+			dispatch(resetNewForm())
 			history.push(`/trips/${trip.id}`)
 		}
 		})
