@@ -9,11 +9,11 @@ import MyTrips from "./components/MyTrips"
 // import MainContainer from "./components/MainContainer.js"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home"
-import NewTrip from "./components/NewTrip"
+// import NewTrip from "./components/NewTrip"
 import Nav from "./components/Nav"
 import TripCard from "./components/TripCard"
 import NewTripFormWrapper from "./components/NewTripFormWrapper"
-import { setFormDataForEdit } from "./actions/newTrip"
+// import { setFormDataForEdit } from "./actions/newTrip"
 import EditFormWrapper from "./components/EditFormWrapper"
 
 
@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   render(){
-   const {loggedIn, alltrips, setFormDataForEdit} = this.props
+   const {loggedIn, alltrips} = this.props
    return (
       <header className="App-header">  
     <div className="App">
@@ -68,7 +68,7 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { getCurrentUser, setFormDataForEdit })(App)
+export default connect(mapStateToProps, { getCurrentUser})(App)
      
 
  // fetch("http://localhost:3001/api/v1/users/1")
